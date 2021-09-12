@@ -1,44 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [count, setCount] = useState(0);
+  const [kossie, setKossie] = useState(0);
+  const [test, setTest] = useState(0);
 
-  //const [text, setText] = useState('Kossie'); //담을값,업데이트함수
-  const onSubmit = (event) => {
-    alert('로그인에 성공하셨습니다.');
-    event.preventDefault(); // refresh 막아줌
-    console.log(username, password)
-  }
+  useEffect(()=>{ //이벤트가 발생하면, 무조건 컴포넌트가 재실행되면서 리랜더링
+    console.log('count: ' + count);
+  }, [count]) // , [] : 종속성 --> count가 변할때만 찍히게 한다
 
-  // const onKeyUp = (event) => {
-  //   if (event.keyCode === 13){ //enter key
-  //     console.log(event.keyCode);
-  //     onSubmit();
-  //   }
-  // }
+  useEffect(()=>{
+    console.log('first rendering');
+  }, []) // [] 쓰면 최초 한번만 랜더링
 
-  //let text = "Kossie";
+  const increment = () => {
+    setCount(count + 1);
+  };
 
-  // const updateText = () => {
-  //   //text = 'Coder';
-  //   setText('Coder');
-  //   console.log(text);
-  // }
-
-  return (
+  return (    
     <div className="App">
-      <form onSubmit={onSubmit}>
-        <input 
-        placeholder="Username" 
-        value={username}
-        onChange={e => setUsername(e.target.value)} /><br />
-        <input 
-        placeholder="Password" 
-        value={password}
-        onChange={e => setPassword(e.target.value)}/><br />
-        <button type="submit">Login</button>
-      </form>   
+      <h1>Kossie Coder</h1>
+      <button onClick={increment}>Click1</button>
+      <button onClick={() => setKossie(kossie + 1)}>Click2</button>
+      <button onClick={() => setTest(test + 1)}>Click2</button>
+
     </div>
   );
 }
