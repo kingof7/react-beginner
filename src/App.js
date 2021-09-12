@@ -3,18 +3,23 @@ import Movie from './components/Movie';
 import MovieForm from './components/MovieForm';
 
 function App() {
-  const [movies, setMovies] = useState([ //array
-    { title: 'kossie coder1', year: 2001 }, //object
-    { title: 'kossie coder2', year: 2003 },
-    { title: 'kossie coder3', year: 2005 },
-    { title: 'kossie coder4', year: 2010 },
-  ]);
+  const [movies, setMovies] = useState([]);
 
-  const renderMovies = movies.map(movie => {
+  const removeMovie = (id) => {
+    setMovies(movies.filter(movie => {
+      return movie.id !== id;
+    }));
+  };
+
+  const renderMovies = movies.length ? movies.map(movie => {
     return (
-      <Movie movie={movie} key={movie.title}/>
+      <Movie 
+        movie={movie}
+        key={movie.id}
+        removeMovie={removeMovie}
+      />
     );
-  }); //map을 쓰면 array에서 아이템 하나하나 가져옴
+  }) : '영화 목록이 없습니다.' //map을 쓰면 array에서 아이템 하나하나 가져옴
   const addMovie = (movie) => {    
     setMovies([
       ...movies,
