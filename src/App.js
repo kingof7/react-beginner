@@ -1,4 +1,6 @@
 import React from 'react';
+import Movie from './components/Movie';
+
 
 function App() {
   const movies = [ //array
@@ -10,10 +12,7 @@ function App() {
 
   const renderMovies = movies.map(movie => {
     return (
-      <div className="movie" key={movie.title}>
-        <div className="movie-title">{movie.title}</div>
-        <div className="movie-year">{movie.year}</div>
-      </div>
+      <Movie movie={movie} key={movie.title}/>
     );
   }); //map을 쓰면 array에서 아이템 하나하나 가져옴
 
@@ -21,18 +20,6 @@ function App() {
     <div className="App">
       <h1>Movie list</h1>
       {renderMovies}
-      {/* <div className="movie">
-        <div className="movie-title">{movies[0].title}</div>
-        <div className="movie-year">{movies[0].year}</div>
-      </div>
-      <div className="movie">
-        <div className="movie-title">{movies[1].title}</div>
-        <div className="movie-year">{movies[1].year}</div>
-      </div>
-      <div className="movie">
-        <div className="movie-title">{movies[2].title}</div>
-        <div className="movie-year">{movies[2].year}</div>
-      </div> */}
     </div>
   );
 }
