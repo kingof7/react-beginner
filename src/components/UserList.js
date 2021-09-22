@@ -4,10 +4,13 @@ const UserList = ({ users }) => {
     console.log(users);
     return (
         <div>
+            
             {users.map(user => {
                 return (
-                    <div key={user.id}>
-                        {user.name}
+                    <div className="card mb-3" key={user.id}>
+                        <div className="card-body p-3">
+                            {user.name}
+                        </div>
                     </div>
                 );
             })}
