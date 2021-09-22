@@ -7,6 +7,7 @@ import {
   Switch,
   Route  
 } from 'react-router-dom';
+import Users from './pages/Users';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -46,9 +47,9 @@ function App() {
             <h1>Home</h1>
           </Route>        
           <Route path="/users">
-            <h1>Users</h1>
+            <Users />
           </Route>          
-        </Switch>   
+        </Switch>
       </div>
     </Router>
   );
